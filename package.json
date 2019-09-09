@@ -1,0 +1,56 @@
+{
+  "name": "react-native-startup-time",
+  "version": "0.0.0-development",
+  "description": "measure startup time of your react-native app",
+  "main": "index.js",
+  "files": [
+    "index.js",
+    "index.d.ts",
+    "ios/*",
+    "android/build.gradle",
+    "android/src/*",
+    "react-native-startup-time.podspec"
+  ],
+  "scripts": {
+    "lint": "eslint .",
+    "semantic-release": "semantic-release"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/doomsower/react-native-startup-time.git"
+  },
+  "keywords": [
+    "react-native",
+    "measure",
+    "time",
+    "startup",
+    "start",
+    "performance",
+    "benchmark"
+  ],
+  "author": "Konstantin Kuznetsov",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/doomsower/react-native-startup-time/issues"
+  },
+  "homepage": "https://github.com/doomsower/react-native-startup-time#readme",
+  "peerDependencies": {
+    "react": "^16.8.3",
+    "react-native": ">=0.59.0"
+  },
+  "devDependencies": {
+    "@commitlint/config-conventional": "^8.1.0",
+    "@react-native-community/eslint-config": "^0.0.5",
+    "@semantic-release/changelog": "^3.0.4",
+    "@semantic-release/git": "^7.0.16",
+    "commitlint": "^8.1.0",
+    "eslint": "^6.3.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "husky": "^3.0.5",
+    "prettier": "^1.18.2",
+    "pretty-quick": "^1.11.1",
+    "react": "^16.8.3",
+    "react-native": "^0.59.10",
+    "semantic-release": "^15.13.24"
+  }
+}
