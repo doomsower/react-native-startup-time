@@ -3047,9 +3047,9 @@ minimist@^1.1.1, minimist@^1.2.0:
   integrity sha1-o1AIsg9BOD7sH7kU9M1d95omQoQ=
 
 minipass@^2.2.1, minipass@^2.3.5:
-  version "2.5.0"
-  resolved "https://registry.yarnpkg.com/minipass/-/minipass-2.5.0.tgz#dddb1d001976978158a05badfcbef4a771612857"
-  integrity sha512-9FwMVYhn6ERvMR8XFdOavRz4QK/VJV8elU1x50vYexf9lslDcWe/f4HBRxCPd185ekRSjU6CfYyJCECa/CQy7Q==
+  version "2.5.1"
+  resolved "https://registry.yarnpkg.com/minipass/-/minipass-2.5.1.tgz#cf435a9bf9408796ca3a3525a8b851464279c9b8"
+  integrity sha512-dmpSnLJtNQioZFI5HfQ55Ad0DzzsMAb+HfokwRTNXwEQjepbTkl5mtIlSVxGIkOkxlpX7wIn5ET/oAd9fZ/Y/Q==
   dependencies:
     safe-buffer "^5.1.2"
     yallist "^3.0.0"
@@ -3644,7 +3644,7 @@ react-is@^16.8.1, react-is@^16.8.4:
   integrity sha512-tJBzzzIgnnRfEm046qRcURvwQnZVXmuCbscxUO5RWrGTXpon2d4c8mI0D8WE6ydVIm29JiLB6+RslkIvym9Rjw==
 
 "react-native-startup-time@file:..":
-  version "1.0.0-alpha1"
+  version "1.0.0"
 
 react-native@0.60.5:
   version "0.60.5"
@@ -3689,9 +3689,9 @@ react-proxy@^1.1.7:
     react-deep-force-update "^1.0.0"
 
 react-refresh@^0.4.0:
-  version "0.4.1"
-  resolved "https://registry.yarnpkg.com/react-refresh/-/react-refresh-0.4.1.tgz#2b1e4b1fe932de30c32aec25a0ac777e60bc156e"
-  integrity sha512-My+vtJ3hCT2sOog3g0h9a9J96IaHkIAcencxhe7HtMVQYpNNyJnr+bE9bjcwfwTBi13tkb7oDDCbRtfvK7iiKQ==
+  version "0.4.2"
+  resolved "https://registry.yarnpkg.com/react-refresh/-/react-refresh-0.4.2.tgz#54a277a6caaac2803d88f1d6f13c1dcfbd81e334"
+  integrity sha512-kv5QlFFSZWo7OlJFNYbxRtY66JImuP2LcrFgyJfQaf85gSP+byzG21UbDQEYjU7f//ny8rwiEkO6py2Y+fEgAQ==
 
 react-transform-hmr@^1.0.4:
   version "1.0.4"

@@ -22,10 +22,25 @@ Otherwise, run
 
 ## Usage
 
-```javascript
+Render startup time badge somewhere on your first screen:
+
+```jsx
+import { StartupTime } from 'react-native-startup-time';
+...
+
+<StartupTime
+    ready={true /* optional, defaults to true */}
+    style={styles.startupTime /* optional*/}
+/>
+
+```
+
+Or use imperative call:
+
+```jsx
 import { getTimeSinceStartup } from 'react-native-startup-time';
 
-// somewhere where you app is ready:
+// when you app is ready:
 getTimeSinceStartup().then((time) => {
   console.log(`Time since startup: ${time} ms`);
 });
