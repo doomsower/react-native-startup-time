@@ -1,6 +1,7 @@
 #import "RNStartupTime.h"
 #import <sys/sysctl.h>
 #include <math.h>
+#import <QuartzCore/QuartzCore.h>
 
 @implementation RNStartupTime
 
