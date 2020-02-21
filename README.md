@@ -20,6 +20,31 @@ Otherwise, run
 
 `$ react-native link react-native-startup-time`
 
+### Manual linking installation
+
+1. Open `./android/settings.gradle`, add this:
+
+```gradle
+include ':react-native-startup-time'
+project(':react-native-startup-time').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-startup-time/android')
+```
+
+2. Open `./android/app/build.gradle`, add this:
+
+```gradle
+implementation project(':react-native-startup-time')
+```
+
+3. In `MainApplication.java`, add this:
+
+```java
+// Import
+import com.github.doomsower.RNStartupTimePackage;
+
+// Define package
+new RNStartupTimePackage()
+```
+
 ## Usage
 
 Render startup time badge somewhere on your first screen:
