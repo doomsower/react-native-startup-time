@@ -1,6 +1,6 @@
 {
   "name": "react-native-startup-time",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "measure startup time of your react-native app",
   "main": "index.js",
   "files": [
