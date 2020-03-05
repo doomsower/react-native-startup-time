@@ -31,7 +31,7 @@ public class RNStartupTimeModule extends ReactContextBaseJavaModule {
     public void getTimeSinceStartup(Promise promise) {
         int ms = (int) (SystemClock.uptimeMillis() - startMark);
         Activity activity = getCurrentActivity();
-        if (activity != null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+        if (activity != null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             activity.reportFullyDrawn();
         }
         promise.resolve(ms);
