@@ -16,10 +16,16 @@ public class RNStartupTimeModule extends ReactContextBaseJavaModule {
     public static final String NAME = "RNStartupTime";
 
     private final long startMark;
+    private final boolean enforceSingleInvocation;
 
-    public RNStartupTimeModule(ReactApplicationContext reactContext, long startMark) {
+    private boolean alreadyInvoked;
+
+    public RNStartupTimeModule(ReactApplicationContext reactContext, long startMark, boolean enforceSingleInvocation) {
         super(reactContext);
         this.startMark = startMark;
+        this.enforceSingleInvocation = enforceSingleInvocation;
+
+        alreadyInvoked = false;
     }
 
     @Override
@@ -29,11 +35,23 @@ public class RNStartupTimeModule extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void getTimeSinceStartup(Promise promise) {
-        int ms = (int) (SystemClock.uptimeMillis() - startMark);
-        Activity activity = getCurrentActivity();
-        if (activity != null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            activity.reportFullyDrawn();
+        try {
+            if (enforceSingleInvocation && alreadyInvoked) {
+                throw new IllegalStateException("Redundant invocation of `getTimeSinceStartup`. " +
+                        "To prevent adulteration of your analytics data, this request was aborted");
+            }
+
+            alreadyInvoked = true;
+
+            int ms = (int) (SystemClock.uptimeMillis() - startMark);
+            Activity activity = getCurrentActivity();
+            if (activity != null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                activity.reportFullyDrawn();
+            }
+            promise.resolve(ms);
+
+        } catch (Exception e) {
+            promise.reject(e);
         }
-        promise.resolve(ms);
     }
 }
