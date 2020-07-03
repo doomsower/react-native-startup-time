@@ -70,3 +70,27 @@ getTimeSinceStartup().then((time) => {
   console.log(`Time since startup: ${time} ms`);
 });
 ```
+
+### Ensuring purity of your analytics data
+
+_This section is applicable to Android only_
+
+In case you're going to use this library for collecting the performance analytics, be aware to discard redundant samples which may sometimes pop up.
+
+Depending on which lifecycle hook you've attached your call to `getTimeSinceStartup()` you might receive redundant invocations, e.g. when the app is brought from bg to fg. Because the app isn't really starting up, the measured time can be unrealistic; such unrealistic samples adulterate your data and should be avoided.
+
+To enforce single-sampling strategy, create your package using constructor with parameter `true`:
+```java
+// Define package
+new RNStartupTimePackage(true)
+```
+then sample the startup time with catching the redundant invocation error:
+```jsx
+// when you app is ready:
+getTimeSinceStartup().then((time) => {
+  // Initial sample. Collect it for your analytics.
+})
+.catch((e) => {
+  // Redundant sample. Do nothing or print a log.
+});
+```
