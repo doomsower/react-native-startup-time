@@ -17,7 +17,7 @@ public class RNStartupTimePackage implements ReactPackage {
     private boolean enforceSingleInvocation;
 
     public RNStartupTimePackage() {
-        this(false);
+        this(true);
     }
 
     /**
