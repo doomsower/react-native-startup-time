@@ -14,7 +14,7 @@ If you know a better way to measure startup time (in a module), let me know or b
 
 ### Mostly automatic installation
 
-This module supports autolinking so if you use RN 0.60+ then no additional action is required.
+This module supports autolinking so **if you use RN 0.60+ then no additional action is required**.
 
 Otherwise, run
 
@@ -22,6 +22,9 @@ Otherwise, run
 
 ### Manual linking installation
 
+<details>
+    <summary>Show manual installation steps</summary>
+    
 1. Open `./android/settings.gradle`, add this:
 
 ```gradle
@@ -44,6 +47,8 @@ import com.github.doomsower.RNStartupTimePackage;
 // Define package
 new RNStartupTimePackage()
 ```
+</details>
+
 
 ## Usage
 
@@ -51,13 +56,11 @@ Render startup time badge somewhere on your first screen:
 
 ```jsx
 import { StartupTime } from 'react-native-startup-time';
-...
 
 <StartupTime
-    ready={true /* optional, defaults to true */}
-    style={styles.startupTime /* optional*/}
+  ready={true /* optional, defaults to true */}
+  style={styles.startupTime /* optional*/}
 />
-
 ```
 
 Or use imperative call:
@@ -71,26 +74,20 @@ getTimeSinceStartup().then((time) => {
 });
 ```
 
-### Ensuring purity of your analytics data
+_The following sections are applicable to Android only_
 
-_This section is applicable to Android only_
+### Single-Sampling
 
-In case you're going to use this library for collecting the performance analytics, be aware to discard redundant samples which may sometimes pop up.
+This makes sure Android doesn't resolve the getTimeSinceStartup promise more than once per app execution. More information in [PR #10](https://github.com/doomsower/react-native-startup-time/pull/10).
 
-Depending on which lifecycle hook you've attached your call to `getTimeSinceStartup()` you might receive redundant invocations, e.g. when the app is brought from bg to fg. Because the app isn't really starting up, the measured time can be unrealistic; such unrealistic samples adulterate your data and should be avoided.
+Since v1.4.0 this strategy is enabled by default, if you're migrating from a previous version and you just want things to keep working as they are, follow the steps below.
 
-To enforce single-sampling strategy, create your package using constructor with parameter `true`:
+#### Disabling Single-Sampling:
+
+Be aware, depending on which lifecycle hook you've attached your call to `getTimeSinceStartup()` you might receive redundant invocations, e.g. when the app is brought from bg to fg. Because the app isn't really starting up, the measured time can be unrealistic; such unrealistic samples adulterate your data.
+
+To disable single-sampling strategy, create your package using constructor with parameter `false`:
 ```java
 // Define package
-new RNStartupTimePackage(true)
-```
-then sample the startup time with catching the redundant invocation error:
-```jsx
-// when you app is ready:
-getTimeSinceStartup().then((time) => {
-  // Initial sample. Collect it for your analytics.
-})
-.catch((e) => {
-  // Redundant sample. Do nothing or print a log.
-});
+new RNStartupTimePackage(false)
 ```
